@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "label": "Demo data",
+    "note": "Fictional demo entries placed in the Surat area. None of these are real businesses and none are officially authorised. Replace with imported CPCB / state pollution control board authorisation data before real use."
+  },
+  "recyclers": [
+    {"id": "r_greenloop", "name": "GreenLoop E-Waste Hub (Demo)", "address": "Plot 14, Udhna Industrial Estate, Surat 394210", "city": "Surat", "lat": 21.1705, "lng": 72.8410,
+     "accepts": ["computing", "mobile", "displays", "peripherals", "small_electronics", "power", "network_storage", "other"], "hours": "Mon-Sat 9:30-18:30", "pickup_available": true, "min_pickup_kg": 1.5, "processing_days": 7, "rating": 4.6,
+     "services": ["recycle"], "verification": {"status": "verified_demo", "label": "Verified in the demo dataset (fictional)", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_tapi_circular", "name": "Tapi Circular Recyclers (Demo)", "address": "Shed 22, Pandesara GIDC, Surat 394221", "city": "Surat", "lat": 21.1460, "lng": 72.8360,
+     "accepts": ["computing", "mobile", "peripherals", "small_electronics", "network_storage"], "hours": "Mon-Sat 10:00-18:00", "pickup_available": true, "min_pickup_kg": 5, "processing_days": 5, "rating": 4.4,
+     "services": ["recycle"], "verification": {"status": "verified_demo", "label": "Verified in the demo dataset (fictional)", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_adajan_dropoff", "name": "Adajan Drop-Point, ReUse Collective (Demo)", "address": "Shop 5, Green Plaza, Adajan Gam, Surat 395009", "city": "Surat", "lat": 21.1950, "lng": 72.7930,
+     "accepts": ["small_electronics", "mobile", "peripherals", "power"], "hours": "Daily 10:00-20:00", "pickup_available": false, "min_pickup_kg": 0, "processing_days": 3, "rating": 4.2,
+     "services": ["recycle", "donate"], "verification": {"status": "unverified", "label": "Not verified", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_vesu_battery", "name": "Vesu Battery and Small Electronics Point (Demo)", "address": "GF-3, Vesu Main Road, Surat 395007", "city": "Surat", "lat": 21.1430, "lng": 72.7690,
+     "accepts": ["power", "small_electronics"], "hours": "Mon-Sat 10:00-19:00", "pickup_available": false, "min_pickup_kg": 0, "processing_days": 4, "rating": 4.0,
+     "services": ["recycle"], "verification": {"status": "verified_demo", "label": "Verified in the demo dataset (fictional)", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_sachin_industrial", "name": "Sachin GIDC Industrial E-Waste Processing (Demo)", "address": "Plot 88, Sachin GIDC, Surat 394230", "city": "Surat", "lat": 21.0870, "lng": 72.8680,
+     "accepts": ["computing", "mobile", "displays", "peripherals", "small_electronics", "power", "network_storage", "other"], "hours": "Mon-Fri 9:00-17:00", "pickup_available": true, "min_pickup_kg": 15, "processing_days": 10, "rating": 4.5,
+     "services": ["recycle"], "verification": {"status": "verified_demo", "label": "Verified in the demo dataset (fictional)", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_katargam_desk", "name": "Katargam Campus Collection Desk (Demo)", "address": "Near Lal Darwaja Road, Katargam, Surat 395004", "city": "Surat", "lat": 21.2260, "lng": 72.8320,
+     "accepts": ["computing", "mobile", "small_electronics"], "hours": "Mon-Sat 11:00-18:00", "pickup_available": false, "min_pickup_kg": 0, "processing_days": 6, "rating": 4.1,
+     "services": ["recycle"], "verification": {"status": "unverified", "label": "Not verified", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_campus_bin", "name": "Green Campus Collection Bin (Demo)", "address": "Near Main Gate, Ichchhanath, Surat 395007", "city": "Surat", "lat": 21.1662, "lng": 72.7849,
+     "accepts": ["small_electronics", "power", "mobile", "peripherals"], "hours": "Open 24 hours", "pickup_available": false, "min_pickup_kg": 0, "processing_days": 14, "rating": 4.3,
+     "services": ["recycle"], "verification": {"status": "verified_demo", "label": "Verified in the demo dataset (fictional)", "source": "Fictional demo entry", "license_no": null, "valid_until": null}},
+    {"id": "r_piplod_repair", "name": "Piplod Repair and Refurb Studio (Demo)", "address": "Shop 12, Piplod Circle, Surat 395007", "city": "Surat", "lat": 21.1590, "lng": 72.7720,
+     "accepts": ["computing", "mobile", "displays", "peripherals"], "hours": "Mon-Sat 10:30-19:30", "pickup_available": false, "min_pickup_kg": 0, "processing_days": 2, "rating": 4.3,
+     "services": ["repair", "resell"], "verification": {"status": "unverified", "label": "Not verified", "source": "Fictional demo entry", "license_no": null, "valid_until": null}}
+  ]
+}

@@ -1,0 +1,238 @@
+# ReLoop impact assumptions
+# ---------------------------------------------------------------------------------------
+# STATUS: ILLUSTRATIVE PLACEHOLDERS. These are configured assumptions, NOT measured or
+# peer-reviewed values. Replace them with verified factors (and cite the source in
+# docs/DATA_SOURCES.md) before making any public environmental claim.
+# Laptop values (1.8 kg, 6.4 kg CO2e) come from the project brief; everything else is a
+# rough placeholder chosen to be internally consistent.
+# ---------------------------------------------------------------------------------------
+version: "2026.09-demo"
+status: illustrative
+disclaimer: "Illustrative estimate based on configured assumptions — not a measured or certified figure."
+
+categories:
+  computing: Computers and components
+  mobile: Phones and tablets
+  displays: Monitors and TVs
+  peripherals: Keyboards, mice, printers
+  small_electronics: Small electronics
+  power: Batteries and power banks
+  network_storage: Routers and storage
+  other: Other electronics
+
+# Expected share of ITEMS by category in a typical campus/society (assumption).
+# Used only for the "collection gap" analysis that drives campaign suggestions.
+expected_item_mix:
+  small_electronics: 0.38
+  peripherals: 0.13
+  mobile: 0.14
+  computing: 0.12
+  power: 0.08
+  network_storage: 0.06
+  displays: 0.05
+  other: 0.04
+
+# Used to size a suggested collection drive (assumptions, see docs/DATA_SOURCES.md).
+drive:
+  participation_rate: 0.4
+  items_per_participant: 3
+
+impact_factors:
+  laptop:
+    label: Laptop
+    category: computing
+    sub_category: Computing Device
+    average_weight_kg: 1.8
+    co2e_kg_per_item: 6.4
+    recovery_score: 78
+    hazardous: false
+    repairable: true
+    base_points: 126
+    materials: {aluminium: 0.22, copper: 0.08, plastics: 0.30, steel: 0.12, glass: 0.10, other: 0.18}
+  desktop_pc:
+    label: Desktop PC
+    category: computing
+    sub_category: Computing Device
+    average_weight_kg: 6.5
+    co2e_kg_per_item: 21.0
+    recovery_score: 70
+    hazardous: false
+    repairable: true
+    base_points: 140
+    materials: {aluminium: 0.05, copper: 0.06, plastics: 0.18, steel: 0.52, glass: 0.02, other: 0.17}
+  motherboard:
+    label: Motherboard / circuit board
+    category: computing
+    sub_category: Component
+    average_weight_kg: 0.6
+    co2e_kg_per_item: 2.6
+    recovery_score: 88
+    hazardous: false
+    repairable: false
+    base_points: 60
+    materials: {aluminium: 0.08, copper: 0.20, plastics: 0.35, steel: 0.05, glass: 0.0, other: 0.32}
+  smartphone:
+    label: Smartphone
+    category: mobile
+    sub_category: Mobile Device
+    average_weight_kg: 0.19
+    co2e_kg_per_item: 0.8
+    recovery_score: 82
+    hazardous: false
+    repairable: true
+    base_points: 80
+    materials: {aluminium: 0.18, copper: 0.15, plastics: 0.25, steel: 0.05, glass: 0.20, other: 0.17}
+  tablet:
+    label: Tablet
+    category: mobile
+    sub_category: Mobile Device
+    average_weight_kg: 0.5
+    co2e_kg_per_item: 1.9
+    recovery_score: 80
+    hazardous: false
+    repairable: true
+    base_points: 90
+    materials: {aluminium: 0.25, copper: 0.08, plastics: 0.18, steel: 0.04, glass: 0.28, other: 0.17}
+  monitor:
+    label: Monitor
+    category: displays
+    sub_category: Display
+    average_weight_kg: 4.5
+    co2e_kg_per_item: 11.0
+    recovery_score: 62
+    hazardous: false
+    repairable: true
+    base_points: 70
+    materials: {aluminium: 0.06, copper: 0.05, plastics: 0.40, steel: 0.15, glass: 0.24, other: 0.10}
+  television:
+    label: Television
+    category: displays
+    sub_category: Display
+    average_weight_kg: 9.0
+    co2e_kg_per_item: 22.0
+    recovery_score: 58
+    hazardous: false
+    repairable: true
+    base_points: 110
+    materials: {aluminium: 0.05, copper: 0.04, plastics: 0.35, steel: 0.18, glass: 0.28, other: 0.10}
+  printer:
+    label: Printer
+    category: peripherals
+    sub_category: Office Equipment
+    average_weight_kg: 6.0
+    co2e_kg_per_item: 13.0
+    recovery_score: 55
+    hazardous: false
+    repairable: true
+    base_points: 60
+    materials: {aluminium: 0.02, copper: 0.04, plastics: 0.55, steel: 0.30, glass: 0.0, other: 0.09}
+  keyboard:
+    label: Keyboard
+    category: peripherals
+    sub_category: Computer Peripheral
+    average_weight_kg: 0.6
+    co2e_kg_per_item: 1.3
+    recovery_score: 52
+    hazardous: false
+    repairable: false
+    base_points: 25
+    materials: {aluminium: 0.02, copper: 0.04, plastics: 0.82, steel: 0.06, glass: 0.0, other: 0.06}
+  mouse:
+    label: Mouse
+    category: peripherals
+    sub_category: Computer Peripheral
+    average_weight_kg: 0.12
+    co2e_kg_per_item: 0.3
+    recovery_score: 48
+    hazardous: false
+    repairable: false
+    base_points: 15
+    materials: {aluminium: 0.0, copper: 0.05, plastics: 0.85, steel: 0.03, glass: 0.0, other: 0.07}
+  charger:
+    label: Charger / adapter
+    category: small_electronics
+    sub_category: Accessory
+    average_weight_kg: 0.12
+    co2e_kg_per_item: 0.3
+    recovery_score: 66
+    hazardous: false
+    repairable: false
+    base_points: 15
+    materials: {aluminium: 0.02, copper: 0.20, plastics: 0.55, steel: 0.10, glass: 0.0, other: 0.13}
+  cable:
+    label: Cable
+    category: small_electronics
+    sub_category: Accessory
+    average_weight_kg: 0.08
+    co2e_kg_per_item: 0.2
+    recovery_score: 72
+    hazardous: false
+    repairable: false
+    base_points: 8
+    materials: {aluminium: 0.0, copper: 0.45, plastics: 0.50, steel: 0.0, glass: 0.0, other: 0.05}
+  earphones:
+    label: Earphones / headphones
+    category: small_electronics
+    sub_category: Accessory
+    average_weight_kg: 0.05
+    co2e_kg_per_item: 0.12
+    recovery_score: 50
+    hazardous: false
+    repairable: false
+    base_points: 12
+    materials: {aluminium: 0.0, copper: 0.15, plastics: 0.70, steel: 0.05, glass: 0.0, other: 0.10}
+  router:
+    label: Router / modem
+    category: network_storage
+    sub_category: Networking
+    average_weight_kg: 0.4
+    co2e_kg_per_item: 1.0
+    recovery_score: 60
+    hazardous: false
+    repairable: false
+    base_points: 30
+    materials: {aluminium: 0.03, copper: 0.08, plastics: 0.70, steel: 0.05, glass: 0.0, other: 0.14}
+  hard_drive:
+    label: Hard drive
+    category: network_storage
+    sub_category: Storage
+    average_weight_kg: 0.45
+    co2e_kg_per_item: 1.5
+    recovery_score: 74
+    hazardous: false
+    repairable: false
+    base_points: 45
+    materials: {aluminium: 0.45, copper: 0.05, plastics: 0.08, steel: 0.30, glass: 0.0, other: 0.12}
+  power_bank:
+    label: Power bank
+    category: power
+    sub_category: Lithium battery device
+    average_weight_kg: 0.25
+    co2e_kg_per_item: 0.9
+    recovery_score: 65
+    hazardous: true
+    repairable: false
+    base_points: 40
+    materials: {aluminium: 0.15, copper: 0.12, plastics: 0.28, steel: 0.05, glass: 0.0, other: 0.40}
+  battery:
+    label: Loose battery
+    category: power
+    sub_category: Battery
+    average_weight_kg: 0.1
+    co2e_kg_per_item: 0.35
+    recovery_score: 68
+    hazardous: true
+    repairable: false
+    base_points: 25
+    materials: {aluminium: 0.10, copper: 0.10, plastics: 0.10, steel: 0.25, glass: 0.0, other: 0.45}
+  other_electronics:
+    label: Other electronics
+    category: other
+    sub_category: Electronics
+    average_weight_kg: 1.0
+    co2e_kg_per_item: 2.5
+    recovery_score: 55
+    hazardous: false
+    repairable: false
+    base_points: 30
+    materials: {aluminium: 0.08, copper: 0.08, plastics: 0.45, steel: 0.15, glass: 0.04, other: 0.20}

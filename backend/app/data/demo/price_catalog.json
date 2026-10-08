@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "name": "ReLoop curated demo price dataset",
+    "version": "2026.09-demo",
+    "updated": "2026-09-30",
+    "currency": "INR",
+    "is_live": false,
+    "source": "Curated by the ReLoop team for demo purposes. Not live market data.",
+    "label": "Estimated local market range",
+    "disclaimer": "Estimated range, not a guaranteed offer. Real prices depend on model, age, condition and the buyer."
+  },
+  "condition_factors": {"like_new": 1.25, "good": 1.0, "fair": 0.6, "damaged": 0.0},
+  "brand_factors": {"apple": 1.6, "samsung": 1.1, "dell": 1.05, "hp": 1.0, "lenovo": 1.0, "asus": 1.0, "acer": 0.95, "generic": 1.0},
+  "types": {
+    "laptop": {"resale": [6000, 22000], "recycle": [1000, 2000]},
+    "desktop_pc": {"resale": [4000, 15000], "recycle": [600, 1500]},
+    "motherboard": {"resale": [800, 4000], "recycle": [200, 700]},
+    "smartphone": {"resale": [3500, 16000], "recycle": [200, 700]},
+    "tablet": {"resale": [3000, 14000], "recycle": [200, 800]},
+    "monitor": {"resale": [1500, 3500], "recycle": [150, 400]},
+    "television": {"resale": [2500, 12000], "recycle": [300, 900]},
+    "printer": {"resale": [1000, 4000], "recycle": [100, 350]},
+    "keyboard": {"resale": [200, 1200], "recycle": [20, 80]},
+    "mouse": {"resale": [150, 800], "recycle": [10, 50]},
+    "charger": {"resale": [100, 600], "recycle": [10, 40]},
+    "cable": {"resale": [50, 250], "recycle": [5, 25]},
+    "earphones": {"resale": [100, 1500], "recycle": [5, 30]},
+    "router": {"resale": [300, 1500], "recycle": [30, 120]},
+    "hard_drive": {"resale": [500, 3000], "recycle": [50, 200]},
+    "power_bank": {"resale": [300, 1500], "recycle": [20, 100]},
+    "battery": {"resale": [0, 0], "recycle": [5, 30]},
+    "other_electronics": {"resale": [200, 2000], "recycle": [20, 200]}
+  },
+  "models": [
+    {"id": "m_macbook_air", "name": "MacBook Air (M1, 2020)", "type": "laptop", "brand": "apple", "condition": "good", "resale": [28000, 36000], "recycle": [1800, 3000]},
+    {"id": "m_iphone_12", "name": "iPhone 12", "type": "smartphone", "brand": "apple", "condition": "good", "resale": [16000, 21000], "recycle": [400, 900]},
+    {"id": "m_thinkpad_t480", "name": "Lenovo ThinkPad T480", "type": "laptop", "brand": "lenovo", "condition": "good", "resale": [14000, 20000], "recycle": [1200, 2200]},
+    {"id": "m_dell_inspiron", "name": "Dell Inspiron 15 (2018)", "type": "laptop", "brand": "dell", "condition": "fair", "resale": [6500, 10500], "recycle": [1000, 1800]},
+    {"id": "m_cracked_laptop", "name": "Laptop with cracked screen", "type": "laptop", "brand": "generic", "condition": "damaged", "resale": null, "recycle": [1000, 2000]},
+    {"id": "m_lg_monitor", "name": "LG 22-inch LED monitor", "type": "monitor", "brand": "generic", "condition": "good", "resale": [2500, 4000], "recycle": [200, 450]},
+    {"id": "m_old_monitor", "name": "Old 19-inch monitor", "type": "monitor", "brand": "generic", "condition": "fair", "resale": [1500, 3000], "recycle": [150, 400]},
+    {"id": "m_galaxy_m31", "name": "Samsung Galaxy M31", "type": "smartphone", "brand": "samsung", "condition": "good", "resale": [6500, 9000], "recycle": [250, 600]},
+    {"id": "m_ipad_7", "name": "iPad (7th generation)", "type": "tablet", "brand": "apple", "condition": "good", "resale": [11000, 15000], "recycle": [400, 900]},
+    {"id": "m_laserjet", "name": "HP LaserJet printer", "type": "printer", "brand": "hp", "condition": "good", "resale": [1500, 3500], "recycle": [150, 350]},
+    {"id": "m_kb_mouse", "name": "Wired keyboard and mouse set", "type": "keyboard", "brand": "generic", "condition": "good", "resale": [300, 900], "recycle": [30, 90]},
+    {"id": "m_power_bank", "name": "Power bank (10,000 mAh)", "type": "power_bank", "brand": "generic", "condition": "fair", "resale": null, "recycle": [30, 100]},
+    {"id": "m_seagate_1tb", "name": "Seagate 1 TB hard drive", "type": "hard_drive", "brand": "generic", "condition": "good", "resale": [800, 1500], "recycle": [60, 200]},
+    {"id": "m_chargers", "name": "Assorted chargers (5 pieces)", "type": "charger", "brand": "generic", "condition": "good", "resale": [200, 500], "recycle": [40, 120]}
+  ]
+}

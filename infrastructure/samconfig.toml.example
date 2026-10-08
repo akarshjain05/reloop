@@ -1,0 +1,17 @@
+# Copy to samconfig.toml (git-ignored), then from this folder run:  sam build && sam deploy
+version = 0.1
+
+[default.global.parameters]
+stack_name = "reloop-demo"
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.deploy.parameters]
+region = "ap-south-1"            # where the API, database, storage and sign-in live
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+# BedrockRegion/BedrockModelId must be a region + model your account can invoke (check the Bedrock console).
+parameter_overrides = "Stage=\"demo\" BedrockRegion=\"us-east-1\" BedrockModelId=\"us.amazon.nova-lite-v1:0\" DemoMode=\"true\""

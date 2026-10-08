@@ -1,0 +1,37 @@
+# ReLoop points, tiers and ReLoop Score parameters. Documented in docs/ARCHITECTURE.md.
+version: "1.0"
+
+points:
+  # subtotal = base_points[item] x weight_factor x recovery_factor x quantity
+  #   weight_factor   = clamp(floor + slope * (weight / typical_weight), floor, cap)
+  #   recovery_factor = base + recovery_score / divisor
+  # total = subtotal + verified_bonus + segregation_bonus + event_bonus   (rounded; each bonus is a % of subtotal)
+  weight_factor: {floor: 0.6, slope: 0.4, cap: 2.0}
+  recovery_factor: {base: 0.75, divisor: 200}
+  verified_bonus_pct: 0.20          # only after a verified pickup / drop-off
+  segregation_bonus_pct: 0.05       # % of subtotal (so splitting items can't farm it); verifier confirms the item matched what was declared
+  event_bonus_pct_per_challenge: 0.10
+  event_bonus_cap_pct: 0.25
+  max_daily_points: 600             # per user per day (anti-farming)
+  bin_scan_points: 5                # confirmed "Scan My Waste" check, once per day
+  bin_scan_cooldown_hours: 20
+
+tiers:
+  - {name: Starter, min: 0}
+  - {name: Contributor, min: 250}
+  - {name: Advocate, min: 750}
+  - {name: Steward, min: 1500}
+  - {name: Champion, min: 3000}
+
+reloop_score:
+  window_days: 30
+  weights: {participation: 30, verified_disposal: 25, diversion: 20, segregation: 15, consistency: 10}
+  participation_target: 0.50        # 50% of members active in the window = full marks
+  target_kg_per_member_month: 3.0   # diversion target per enrolled member (assumption)
+  default_segregation: 0.5          # used when a building has no bin scans yet
+
+fraud:
+  near_duplicate_hamming: 6         # aHash distance treated as "similar image"
+  velocity_limit_per_hour: 8
+  review_threshold: 60
+  scores: {duplicate_exact: 70, duplicate_similar: 45, high_velocity: 30, mismatch: 40}
