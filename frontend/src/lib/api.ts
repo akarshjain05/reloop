@@ -68,7 +68,7 @@ export const api = {
     const url = URL.createObjectURL(await res.blob());
     const a = document.createElement("a");
     a.href = url; a.download = filename; a.click();
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 150);
   },
   mediaUrl: (u?: string | null) => (!u ? "" : u.startsWith("/media/") ? `${BASE}${u}` : u),
 };
