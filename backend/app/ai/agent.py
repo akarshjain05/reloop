@@ -70,7 +70,7 @@ def _summary(name, out) -> str:
         if out.get("resale"):
             bits.append(f"resale {_inr(out['resale']['min'])} to {_inr(out['resale']['max'])}")
         bits.append(f"recycle {_inr(out['recycle']['min'])} to {_inr(out['recycle']['max'])}")
-        return ", ".join(bits) + " (curated demo range)"
+        return ", ".join(bits) + ""
     if name == "get_recycler_options":
         o = out["options"]
         return f"{len(o)} options, nearest is {o[0]['name']} at {o[0]['distance_km']} km" if o else "no accepting recycler found nearby"
@@ -108,7 +108,7 @@ def build_tools(ctx: ToolContext) -> dict:
         return ctx.run("identify_waste", {}, go)
 
     def get_price_estimate(item_type: str, condition: str = "good", brand: str = "", quantity: int = 1) -> dict:
-        """Estimate resale and recycling value in INR. Values are a curated demo range, not live market prices.
+        """Estimate resale and recycling value in INR. Values are a curated range, not live market prices.
 
         Args:
             item_type: catalog key returned by identify_waste, for example laptop

@@ -87,7 +87,7 @@ function AnalyticsTab() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {([["Submissions", num(a.total_submissions), `${num(a.verified_submissions)} verified`], ["Diverted", kg(a.kg_diverted), "verified weight"], ["CO₂e avoided", `${num(a.co2e_kg_avoided)} kg`, "illustrative estimate"], ["Recycling value", inr(a.recycling_value_inr), "estimate"],
+        {([["Submissions", num(a.total_submissions), `${num(a.verified_submissions)} verified`], ["Diverted", kg(a.kg_diverted), "verified weight"], ["CO₂e avoided", `${num(a.co2e_kg_avoided)} kg`, "estimate"], ["Recycling value", inr(a.recycling_value_inr), "estimate"],
           ["Participation", pct(a.participation_rate), `${a.repeat_users} repeat users`], ["Pickup completion", pct(a.pickup_completion_rate), `${q.pickups_open} open`], ["Challenge completion", pct(a.challenge_completion_rate), ""], ["Open fraud flags", String(a.open_fraud_flags), `${q.to_verify} awaiting verification`]] as const).map(([l, v, s]) => <Card key={l}><Stat label={l} value={v} sub={s} /></Card>)}
       </div>
       <Card><h2 className="text-xl font-semibold">AI accuracy feedback</h2><p className="text-sm text-ink-500">Human-in-the-loop: every confirmation records whether the person had to correct the AI. {a.ai_accuracy.n} confirmed predictions.</p>

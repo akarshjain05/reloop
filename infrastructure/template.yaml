@@ -118,47 +118,18 @@ Resources:
         Rules:
           - {Id: expire-demo-uploads, Status: Enabled, Prefix: uploads/, ExpirationInDays: 30}
 
-  # ---------------------------------------------------------------- Frontend: S3 (private) + CloudFront
+  # ---------------------------------------------------------------- Frontend: S3 Static Website (Bypassing CloudFront)
   FrontendBucket:
     Type: AWS::S3::Bucket
     Properties:
-      PublicAccessBlockConfiguration: {BlockPublicAcls: true, BlockPublicPolicy: true, IgnorePublicAcls: true, RestrictPublicBuckets: true}
-      BucketEncryption:
-        ServerSideEncryptionConfiguration:
-          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
-
-  FrontendOac:
-    Type: AWS::CloudFront::OriginAccessControl
-    Properties:
-      OriginAccessControlConfig:
-        Name: !Sub "reloop-${Stage}-oac"
-        OriginAccessControlOriginType: s3
-        SigningBehavior: always
-        SigningProtocol: sigv4
-
-  Distribution:
-    Type: AWS::CloudFront::Distribution
-    Properties:
-      DistributionConfig:
-        Enabled: true
-        Comment: !Sub "ReLoop ${Stage} frontend"
-        DefaultRootObject: index.html
-        HttpVersion: http2
-        PriceClass: PriceClass_100
-        Origins:
-          - Id: frontend
-            DomainName: !GetAtt FrontendBucket.RegionalDomainName
-            OriginAccessControlId: !GetAtt FrontendOac.Id
-            S3OriginConfig: {OriginAccessIdentity: ""}
-        DefaultCacheBehavior:
-          TargetOriginId: frontend
-          ViewerProtocolPolicy: redirect-to-https
-          AllowedMethods: [GET, HEAD]
-          Compress: true
-          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # Managed-CachingOptimized
-        CustomErrorResponses:  # single-page app: unknown paths fall back to index.html
-          - {ErrorCode: 403, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 0}
-          - {ErrorCode: 404, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 0}
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
 
   FrontendBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -167,14 +138,11 @@ Resources:
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
-          - Sid: AllowCloudFrontRead
+          - Sid: PublicReadGetObject
             Effect: Allow
-            Principal: {Service: cloudfront.amazonaws.com}
+            Principal: "*"
             Action: s3:GetObject
             Resource: !Sub "${FrontendBucket.Arn}/*"
-            Condition:
-              StringEquals:
-                "AWS:SourceArn": !Sub "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
 
   # ---------------------------------------------------------------- API: API Gateway (HTTP API) + Lambda (FastAPI via Mangum)
   ApiLogGroup:
@@ -218,18 +186,16 @@ Resources:
           BEDROCK_MODEL_ID: !Ref BedrockModelId
           BEDROCK_REGION: !Ref BedrockRegion
           SEED_ON_START: "false"
-          CORS_ORIGINS: !Sub "https://${Distribution.DomainName},${ExtraCorsOrigins}"
+          CORS_ORIGINS: !Sub "${FrontendBucket.WebsiteURL},${ExtraCorsOrigins}"
       Policies:
         - DynamoDBCrudPolicy: {TableName: !Ref Table}
         - S3CrudPolicy: {BucketName: !Ref UploadsBucket}
         - Version: "2012-10-17"
           Statement:
-            - Sid: InvokeBedrockModels
+            - Sid: InvokeRekognition
               Effect: Allow
-              Action: [bedrock:InvokeModel, bedrock:InvokeModelWithResponseStream]
-              Resource:
-                - !Sub "arn:${AWS::Partition}:bedrock:*::foundation-model/*"
-                - !Sub "arn:${AWS::Partition}:bedrock:*:${AWS::AccountId}:inference-profile/*"
+              Action: [rekognition:DetectLabels]
+              Resource: "*"
             - Sid: ManageUsersInThisPoolOnly
               Effect: Allow
               Action: [cognito-idp:AdminCreateUser, cognito-idp:AdminSetUserPassword, cognito-idp:AdminAddUserToGroup, cognito-idp:AdminGetUser]
@@ -247,12 +213,10 @@ Outputs:
     Description: API base URL. Use it as VITE_API_BASE_URL when building the frontend.
     Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}"
   FrontendUrl:
-    Description: The deployed website (CloudFront).
-    Value: !Sub "https://${Distribution.DomainName}"
+    Description: The deployed website (S3 Static Website).
+    Value: !GetAtt FrontendBucket.WebsiteURL
   FrontendBucketName:
     Value: !Ref FrontendBucket
-  DistributionId:
-    Value: !Ref Distribution
   UserPoolId:
     Value: !Ref UserPool
   UserPoolClientId:

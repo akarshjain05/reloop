@@ -66,8 +66,8 @@ export default function Dashboard() {
         <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           <Stat label="Diverted" value={kg(d.month.kg)} sub="from landfill, verified" />
           <Stat label="Items processed" value={num(d.month.items)} />
-          <Stat label="Recycling value" value={inr(d.month.value_inr)} sub="estimate, curated demo prices" />
-          <Stat label="CO₂e avoided" value={`${num(d.month.co2e_kg, 1)} kg`} sub="illustrative estimate" />
+          <Stat label="Recycling value" value={inr(d.month.value_inr)} sub="estimate" />
+          <Stat label="CO₂e avoided" value={`${num(d.month.co2e_kg, 1)} kg`} sub="estimate" />
         </div>
         <p className="mt-4 rounded-xl bg-mist-50 p-3 text-[15px]">{d.impact_story}</p>
       </Card>

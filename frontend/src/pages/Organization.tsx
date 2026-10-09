@@ -49,7 +49,7 @@ export default function Organization() {
         <Card><Stat label="Verified disposal" value={pct(k.recycling_rate)} sub="of committed items" /></Card>
         <Card><Stat label="Diverted" value={kg(k.kg_30d)} sub={`target ${kg(k.target_kg, 0)}`} /></Card>
         <Card><Stat label="Items" value={num(k.items_30d)} sub="last 30 days" /></Card>
-        <Card><Stat label="CO₂e avoided" value={`${num(k.co2e_kg_30d, 1)} kg`} sub="illustrative estimate" /></Card>
+        <Card><Stat label="CO₂e avoided" value={`${num(k.co2e_kg_30d, 1)} kg`} sub="estimate" /></Card>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">

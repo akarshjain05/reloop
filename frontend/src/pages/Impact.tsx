@@ -31,7 +31,7 @@ export default function Impact() {
           <Card tone="petrol" className="rounded-hero">
             <h2 className="text-2xl font-semibold">Your actions this month</h2>
             <p className="mt-2 max-w-3xl text-lg text-petrol-100">You processed <strong className="text-white">{d.this_month.items} items</strong> and diverted <strong className="text-white">{kg(d.this_month.kg)}</strong> from landfill. Your verified recycling actions prevented an estimated <strong className="text-white">{num(d.this_month.co2e_kg, 1)} kg CO₂e</strong> associated with disposal.</p>
-            <p className="mt-2 text-sm text-petrol-200">All-time: {kg(d.totals.all.kg)}, {num(d.totals.all.items)} items, {num(d.totals.all.points)} points. CO₂e is an illustrative estimate from configured impact factors.</p>
+            <p className="mt-2 text-sm text-petrol-200">All-time: {kg(d.totals.all.kg)}, {num(d.totals.all.items)} items, {num(d.totals.all.points)} points. CO₂e is an estimate from configured impact factors.</p>
           </Card>
           <div className="grid gap-4 lg:grid-cols-2">
             <ChartCard title="Waste diverted" caption={`Kilograms per month. Latest: ${kg(series[series.length - 1].kg)}.`}>

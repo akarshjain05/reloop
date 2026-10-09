@@ -102,5 +102,5 @@ def dashboard(c, user: dict) -> dict:
         "recent": _recent(snap, uid),
         "impact_story": (f"Your verified recycling actions in the last 30 days diverted {round(m_t['kg'], 1)} kg of e-waste, which prevented an estimated {co2} kg CO₂e associated with disposal."
                          if m_t["items"] else "Once a pickup or drop-off is verified, your impact shows up here."),
-        "disclaimer": "CO₂e and value figures are estimates based on configured assumptions and a curated demo dataset.",
+        "disclaimer": "CO₂e and value figures are estimates based on configured assumptions and a market dataset.",
     }

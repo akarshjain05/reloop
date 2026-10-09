@@ -16,7 +16,7 @@ from .core.logging import log_event, logger, setup_logging
 from .services.seed import seed_demo
 
 DESCRIPTION = """ReLoop API — turn e-waste into value. Photograph an item, confirm what the AI saw, get an estimated value and impact,
-then recycle through a verified pickup or drop-off to earn points. All values are **estimates**; prices come from a curated demo dataset."""
+then recycle through a verified pickup or drop-off to earn points. All values are **estimates**; prices come from a market dataset."""
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:

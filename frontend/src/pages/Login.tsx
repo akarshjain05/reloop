@@ -8,7 +8,7 @@ import { homeFor, useAuth } from "../lib/auth";
 import { useRuntime } from "../lib/runtime";
 import { useAsync } from "../lib/useAsync";
 
-const ROLE_LABEL: Record<string, string> = { USER: "Resident (Akarsh)", ORGANIZATION_ADMIN: "Campus admin", COLLECTOR: "Collector", ADMIN: "Platform admin" };
+const ROLE_LABEL: Record<string, string> = { USER: "Resident", ORGANIZATION_ADMIN: "Campus admin", COLLECTOR: "Collector", ADMIN: "Platform admin" };
 
 export default function Login() {
   const { user, login, register } = useAuth();
@@ -61,17 +61,6 @@ export default function Login() {
             <Button type="submit" size="lg" className="w-full" loading={busy}>{mode === "in" ? "Sign in" : "Create account"}</Button>
           </form>
 
-          {status && status.demo_accounts.length > 0 && (
-            <Card className="mt-6" aria-label="Demo accounts">
-              <h2 className="text-lg font-semibold">Try a demo account</h2>
-              <p className="text-sm text-ink-500">Fictional data. Pick a role to explore the full loop.</p>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                {status.demo_accounts.map((a) => <Button key={a.email} variant="outline" size="sm" disabled={busy} onClick={() => run(() => login(a.email, a.password))}>{ROLE_LABEL[a.role] ?? a.role}</Button>)}
-              </div>
-              <details className="mt-3 text-sm text-ink-500"><summary className="cursor-pointer font-medium text-ink-700">Show demo credentials</summary>
-                <ul className="mt-2 space-y-1">{status.demo_accounts.map((a) => <li key={a.email}><code>{a.email}</code> / <code>{a.password}</code></li>)}</ul></details>
-            </Card>
-          )}
           {!status && <p className="mt-6 text-sm text-ink-500" role="status">Connecting to ReLoop…</p>}
         </div>
       </div>

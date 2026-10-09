@@ -26,7 +26,7 @@ export function Reward({ rewards }: { rewards: any }) {
       <div className="mt-4 grid gap-5 sm:grid-cols-3">
         <div><div className="font-display text-5xl font-semibold tabular-nums text-signal" aria-label={`${rewards.points} points`}>+{pts}</div><div className="text-petrol-100">ReLoop points{rewards.points_held ? " (held for review)" : ""}</div></div>
         <div><div className="font-display text-3xl font-semibold tabular-nums">+{kg(rewards.kg)}</div><div className="text-petrol-100">diverted from landfill</div></div>
-        <div><div className="font-display text-3xl font-semibold tabular-nums">~{num(rewards.co2e_kg, 1)} kg</div><div className="text-petrol-100">CO₂e avoided (illustrative estimate)</div></div>
+        <div><div className="font-display text-3xl font-semibold tabular-nums">~{num(rewards.co2e_kg, 1)} kg</div><div className="text-petrol-100">CO₂e avoided (estimate)</div></div>
       </div>
       <ul className="mt-5 space-y-2 text-[15px]">
         {up && <li className="flex items-center gap-2"><Trophy className="h-4 w-4 text-signal" aria-hidden="true" />You moved up {rewards.rank_before - rewards.rank_after} places: #{rewards.rank_before} <ArrowRight className="h-4 w-4" aria-hidden="true" /> #{rewards.rank_after} this month.</li>}

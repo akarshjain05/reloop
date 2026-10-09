@@ -13,5 +13,4 @@ cd "$(dirname "$0")/../frontend"
 npm ci --no-audit --no-fund
 VITE_API_BASE_URL="$API" npm run build
 aws s3 sync dist "s3://$BUCKET" --delete --region "$REGION"
-aws cloudfront create-invalidation --distribution-id "$DIST" --paths "/*" > /dev/null
 echo "Published: $SITE"

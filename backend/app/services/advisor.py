@@ -111,7 +111,7 @@ def i_value(c, user, msg, ctx):
                 lo, hi = lo + rng["min"], hi + rng["max"]
                 facts.append(_f(w["label"], f"₹{rng['min']:,} to ₹{rng['max']:,}", S_CAT))
         return {"facts": facts + [_f("Total estimated range", f"₹{lo:,} to ₹{hi:,}", S_CAT)],
-                "text": f"Your waiting items are worth an estimated ₹{lo:,} to ₹{hi:,} in total. That's a curated demo range, not an offer — scanning or correcting an item sharpens it.",
+                "text": f"Your waiting items are worth an estimated ₹{lo:,} to ₹{hi:,} in total. That's a market range, not an offer — scanning or correcting an item sharpens it.",
                 "actions": [{"label": "See ReLoop Exchange", "route": "/exchange"}]}
     return i_what_to_do(c, user, msg, ctx)
 
